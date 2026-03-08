@@ -1,11 +1,12 @@
 //https://styled-components.com/
 import styled from "styled-components";
-import { BtnSave, v } from "../../index";
+import { BtnSave, v, useAuthStore } from "../../index";
 
 export function LoginTemplate() {
+  const {signInWithGoogle} = useAuthStore();
   return (
     <>
-      <Container imgfondo={v.imagenfondo}>
+      <Container $imgfondo={v.imagenfondo}>
         <div className="contentCard">
           <span className="version">version 2.0</span>
           <div className="contentImg">
@@ -18,6 +19,7 @@ export function LoginTemplate() {
               titulo={"Iniciar con Google"}
               icono={<v.iconogoogle />}
               bgcolor={v.colorSecundario}
+              funcion={signInWithGoogle}
               
             />
           </ContainerBtn>
@@ -27,7 +29,7 @@ export function LoginTemplate() {
   );
 }
 const Container = styled.div`
-  background-image: url(${(props) => props.imgfondo});
+  background-image: url(${(props) => props.$imgfondo});
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

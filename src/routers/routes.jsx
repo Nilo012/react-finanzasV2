@@ -1,16 +1,20 @@
-import {Routes,Route,BrowserRouter} from "react-router-dom"
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
-import { Login,Home } from "../index"
-export function MyRoutes(){
-    return(
-        <BrowserRouter>
-    <Routes>
-        <Route path="/gfgf" element={<Home/>}/>
-        <Route path="/" element={<Login/>}/>  
-    </Routes>
+import { Login, Home, UserAuth } from "../index";
+import { ProtectedRoute } from "../hooks/ProtectedRoute";
+export function MyRoutes() {
+  const { user } = UserAuth();
+  console.log("user:", user);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+
+        <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+        
+      </Routes>
     </BrowserRouter>
-
-    )
-    
-
+  );
 }

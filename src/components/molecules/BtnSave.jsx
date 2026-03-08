@@ -6,7 +6,7 @@ import {Icono} from "../../index"
 export function BtnSave({funcion,titulo,bgcolor,icono}){
     return(
         <>
-        <Container type="submit" bgcolor={bgcolor}>
+        <Container type="submit" $bgcolor={bgcolor}>
             <Icono>{icono}</Icono>
            <span className="btn" onClick={funcion}>
             {titulo}
@@ -25,7 +25,7 @@ border: none;
 gap: 10px;
 background-color: initial;
 .btn{
-    background:${(props)=>props.bgcolor} ;
+    background:${(props)=>props.$bgcolor} ;
     padding: 1rem 1.5rem;
     font-weight: 900;
     font-size: 16px;
