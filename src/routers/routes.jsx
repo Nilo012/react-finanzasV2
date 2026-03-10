@@ -6,7 +6,7 @@ export function MyRoutes() {
   const { user } = UserAuth();
   console.log("user:", user);
   return (
-    <BrowserRouter>
+
       <Routes>
         <Route path="/login" element={<Login />} />
 
@@ -15,6 +15,6 @@ export function MyRoutes() {
         </Route>
         
       </Routes>
-    </BrowserRouter>
+    
   );
 }

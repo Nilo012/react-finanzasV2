@@ -36,6 +36,7 @@ background-color: initial;
     white-space: nowrap;
     color: #1E1E1E;
     cursor: pointer;
+
     &:hover{
       transform: translate(-0.2rem, -0.2rem);
       box-shadow: 1.8px 1.8px #000; 
