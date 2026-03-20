@@ -19,7 +19,7 @@ export const AuthContextProvider = ({ children }) => {
       },
     );
     return () => {
-      authListener.subscription;
+      authListener.subscription.unsubscribe();
     };
   }, []);
 

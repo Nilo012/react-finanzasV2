@@ -8,7 +8,7 @@ export function Home(){
     return(
         <>
         <Container>
-            <h1>Bienvenido Nilo {user.full_name}</h1>
+            <h1>Bienvenido  {user.full_name}</h1>
             <img src={user.picture}/>
             <button onClick={signout}>Cerrar</button>
         </Container>

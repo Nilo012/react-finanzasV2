@@ -10,7 +10,7 @@ function App() {
   //
   const { pathname } = useLocation();
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
