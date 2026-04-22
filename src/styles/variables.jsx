@@ -82,6 +82,7 @@ export const v = {
   iconocheck: BsCalendarCheck,
   imagenfondo: fondo,
   colorSecundario: `#c6ffe6`, //#DAC1FF
+  colorselector:`#6ef0b9`,
 };
 /*
     --primary-100:#2E8B57;

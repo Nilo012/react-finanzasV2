@@ -1,19 +1,53 @@
 //https://styled-components.com/
 import styled from "styled-components";
-import {Header } from "../../index";
+import {
+  Header,
+  Selector,
+  v,
+  ListaPaises,
+  useUsuariosStore,
+} from "../../index";
 import { useState } from "react";
 
 export function ConfiguracionTemplate() {
-  const [state,setState]=useState(false)//manejo de estados 
+  const {datausuarios} = useUsuariosStore();
+
+  const [select, setSelect] = useState([]); //manejo de estados para selccionar moneda
+  const [state, setState] = useState(false); //manejo de estados
+
+  const [stateListaPaises, setStateListaPaises] = useState(false); //manejo de estados paises
+
+  const moneda = select.symbol?select.symbol:datausuarios.moneda;
+  const pais = select.countryName?select.countryName:datausuarios.pais;
+  const paisSeleccionado = "🤑" + moneda + "  " + pais;
   return (
     <>
       <Container>
         <header className="header">
-          <Header stateConfig={{state:state, setState:()=>setState(!state)}}/>
+          <Header
+            stateConfig={{ state: state, setState: () => setState(!state) }}
+          />
         </header>
-
-        <section className="area1">area1</section>
-        <section className="area2">area2</section>
+        <section className="area1">
+          <h1>Ajustes</h1>
+        </section>
+        <section className="area2">
+          <ContentCard>
+            <span>Moneda:</span>
+            <Selector
+              state={stateListaPaises}
+              color={v.colorselector}
+              texto1={paisSeleccionado}
+              funcion={() => setStateListaPaises(!stateListaPaises)}
+            />
+            {stateListaPaises && (
+              <ListaPaises
+                setSelect={(p) => setSelect(p)}
+                setState={() => setStateListaPaises(!stateListaPaises)}
+              />
+            )}
+          </ContentCard>
+        </section>
         <section className="main">area3</section>
       </Container>
     </>
@@ -31,6 +65,7 @@ const Container = styled.div`
     "area1" 100px
     "area2" 50px
     "main" auto;
+  font-size: 12px;
 
   .header {
     grid-area: header;
@@ -54,4 +89,13 @@ const Container = styled.div`
     grid-area: main;
     background-color: rgba(179, 46, 241, 0.14);
   }
+`;
+const ContentCard = styled.div`
+  display: flex;
+  text-align: start;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  justify-content: center;
 `;

@@ -23,7 +23,7 @@ export function DataUser({ stateConfig }) {
   return (
     <Container onClick={stateConfig.setState}>
       <div className="imgContainer">
-        <img src={user.picture} />
+        <img src={user.picture} referrerPolicy="no-referrer" />
       </div>
 
       <BtnCircular
