@@ -38,6 +38,7 @@ const Container = styled.div`
   justify-content: center;
   color: #c6ffe6;
   text-align: center;
+  font-family: "Carter One", system-ui;
   .contentCard {
     background-color: #1e1e1e;
     border-radius: 20px;

@@ -24,6 +24,7 @@ text-decoration: none;
 border: none;
 gap: 10px;
 background-color: initial;
+font-family: "Carter One", system-ui;
 .btn{
     background:${(props)=>props.$bgcolor} ;
     padding: 1rem 1.5rem;

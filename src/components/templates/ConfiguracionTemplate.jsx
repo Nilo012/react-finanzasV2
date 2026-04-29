@@ -6,20 +6,32 @@ import {
   v,
   ListaPaises,
   useUsuariosStore,
+  ListaGenerica,
+  TemasData, //viene de datastatic(clik derecho en temasData go definition)
 } from "../../index";
 import { useState } from "react";
 
 export function ConfiguracionTemplate() {
-  const {datausuarios} = useUsuariosStore();
+  const { datausuarios } = useUsuariosStore();
 
-  const [select, setSelect] = useState([]); //manejo de estados para selccionar moneda
+  const [select, setSelect] = useState([]); //manejo de estados para seleccionar moneda
+  const [selectTema, setSelecttema] = useState([]); //*manejo d estado para el tema claro/oscuro
   const [state, setState] = useState(false); //manejo de estados
 
   const [stateListaPaises, setStateListaPaises] = useState(false); //manejo de estados paises
-
-  const moneda = select.symbol?select.symbol:datausuarios.moneda;
-  const pais = select.countryName?select.countryName:datausuarios.pais;
+  const [stateListaTemas, setStateListaTemas] = useState(false); //*lista de temas
+  //pais mmoneda
+  const moneda = select.symbol ? select.symbol : datausuarios.moneda;
+  const pais = select.countryName ? select.countryName : datausuarios.pais;
   const paisSeleccionado = "🤑" + moneda + "  " + pais;
+
+  //tema light y dark
+  const iconobd = datausuarios.tema === "0" ? "☀️" : "🌚";
+  const temabd = datausuarios.tema === "0" ? "light" : "dark";
+  const temainicial = selectTema.tema ? selectTema.tema : temabd;
+  const iconinicial = selectTema.icono ? selectTema.icono : iconobd;
+  const temaSeleccionado = iconinicial + " " + temainicial;
+
   return (
     <>
       <Container>
@@ -47,7 +59,28 @@ export function ConfiguracionTemplate() {
               />
             )}
           </ContentCard>
+
+          {/**despelgable temas light/dark */}
+          <ContentCard>
+            <span>Tema:</span>
+            <Selector
+              texto1={temaSeleccionado}
+              color={v.colorselector}
+              state={stateListaTemas}
+              funcion={() => setStateListaTemas(!stateListaTemas)}
+            ></Selector>
+
+            {/**temas light/dark(data estatica en temasdata) y close */}
+            {stateListaTemas && (
+              <ListaGenerica
+                data={TemasData}
+                setState={() => setStateListaTemas(!stateListaTemas)}
+                funcion={setSelecttema}
+              />
+            )}
+          </ContentCard>
         </section>
+
         <section className="main">area3</section>
       </Container>
     </>
@@ -84,6 +117,9 @@ const Container = styled.div`
     background-color: rgba(77, 237, 106, 0.14);
     display: flex;
     align-items: center;
+    flex-direction: column; //posicionamiento vertical
+    justify-content: start;
+    gap: 30px;
   }
   .main {
     grid-area: main;

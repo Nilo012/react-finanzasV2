@@ -12,5 +12,5 @@
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
-  font-family:var(--second-font) ;
+  font-family:var(--body-font) ;
 }

@@ -64,6 +64,7 @@ const Container = styled.div`
   transition: 0.3s ease-in-out;
   overflow-y:auto ;
   overflow-x: hidden;
+  font-family: "Carter One", system-ui;
   &::-webkit-scrollbar{
     width: 6px;
     border-radius: 10px;
@@ -116,6 +117,7 @@ const Container = styled.div`
     transition: all 0.3s;
     padding: 0 5%;
     position: relative;
+    font-size:12px;
     &:hover {
       background: ${(props) => props.theme.bgAlpha};
     }

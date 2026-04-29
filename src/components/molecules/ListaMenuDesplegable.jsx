@@ -20,8 +20,9 @@ display: flex;
 flex-direction: column;
 position: absolute;
 background-color: ${({theme})=>theme.bg3};
-border-radius: 22px;
+border-radius: 20px;
 top: ${(props)=>props.top};//ver datauser.jsx
 box-shadow: ${()=>v.boxshadowGray};
+z-index: 100;
 
 `;
