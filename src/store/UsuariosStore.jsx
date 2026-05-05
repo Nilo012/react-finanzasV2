@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MostrarUsuarios } from "../index";
+import { EditarTemaMonedaUser, MostrarUsuarios } from "../index";
 
 export const useUsuariosStore = create((set,get)=>(
     {
@@ -9,7 +9,14 @@ export const useUsuariosStore = create((set,get)=>(
             set({datausuarios: response});
             return response;
         },
+
+        //editar tema y tipo de moneda
+        editartemamonedauser: async (p)=>{
+            await EditarTemaMonedaUser(p)
+        }
     }
 ))
 
+
+//
 

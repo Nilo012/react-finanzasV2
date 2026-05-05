@@ -8,11 +8,13 @@ import {
   useUsuariosStore,
   ListaGenerica,
   TemasData, //viene de datastatic(clik derecho en temasData go definition)
+  BtnSave,
 } from "../../index";
 import { useState } from "react";
 
 export function ConfiguracionTemplate() {
-  const { datausuarios } = useUsuariosStore();
+  //3.agrgamos editarmoneda y tema
+  const { datausuarios,editartemamonedauser } = useUsuariosStore();
 
   const [select, setSelect] = useState([]); //manejo de estados para seleccionar moneda
   const [selectTema, setSelecttema] = useState([]); //*manejo d estado para el tema claro/oscuro
@@ -31,6 +33,19 @@ export function ConfiguracionTemplate() {
   const temainicial = selectTema.tema ? selectTema.tema : temabd;
   const iconinicial = selectTema.icono ? selectTema.icono : iconobd;
   const temaSeleccionado = iconinicial + " " + temainicial;
+
+  //3.funcion editar tema y moneda
+  const editar = async()=>{
+    const themeElegido = selectTema.descripcion==="light"?"0":"1"
+    const p ={
+      //3.la palabra tema,moneda,pais,id es igual q el nombre de atributo q esta en la tabla usuarios
+      tema:themeElegido,
+      moneda:moneda,
+      pais: pais,
+      id: datausuarios.id
+    }
+    await editartemamonedauser(p);
+  }
 
   return (
     <>
@@ -79,6 +94,11 @@ export function ConfiguracionTemplate() {
               />
             )}
           </ContentCard>
+          <BtnSave
+            titulo="Guardar"
+            bgcolor={v.colorselector}
+            icono={<v.iconoguardar />} funcion={editar}
+          />
         </section>
 
         <section className="main">area3</section>
@@ -111,6 +131,7 @@ const Container = styled.div`
     background-color: rgba(229, 67, 25, 0.14);
     display: flex;
     align-items: center;
+    justify-content: center;
   }
   .area2 {
     grid-area: area2;
