@@ -1,4 +1,4 @@
-import { MyRoutes, Sidebar, Device, useUsuariosStore } from "./index";
+import { MyRoutes, Sidebar, Device, useUsuariosStore, Login } from "./index";
 import { createContext, useState } from "react";
 import { Light, Dark, AuthContextProvider, Menuambur } from "./index";
 import styled, { ThemeProvider } from "styled-components";
@@ -9,14 +9,18 @@ import { useQuery } from "@tanstack/react-query";
 
 export const ThemeContext = createContext(null);
 function App() {
-  //
+  //4
+  const { mostrarUsuarios, datausuarios } = useUsuariosStore(); //con datausuarios sacamos el tema elegido
+
   const { pathname } = useLocation();
 
-  const [theme, setTheme] = useState("dark");
+  //4const [theme, setTheme] = useState("dark");
+  const theme = datausuarios?.tema === "0" ? "light" : "dark";
+
   const themeStyle = theme === "light" ? Light : Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   //
-  const { mostrarUsuarios } = useUsuariosStore();
+
   const { isLoading, error } = useQuery({
     queryKey: ["mostrar usuarios"],
     queryFn: () => mostrarUsuarios(),
@@ -32,7 +36,7 @@ function App() {
 
   return (
     <>
-      <ThemeContext.Provider value={{ setTheme, theme }}>
+      <ThemeContext.Provider value={{  theme }}>
         <ThemeProvider theme={themeStyle}>
           <AuthContextProvider>
             {pathname != "/login" ? (
@@ -51,7 +55,7 @@ function App() {
                 </Containerbody>
               </Container>
             ) : (
-              <MyRoutes />
+              <Login />
             )}
           </AuthContextProvider>
         </ThemeProvider>

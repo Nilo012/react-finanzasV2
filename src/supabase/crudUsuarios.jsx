@@ -17,14 +17,14 @@ export const MostrarUsuarios = async () => {
       .from("usuarios")
       .select()
       .eq("idauth_supabase", idAuthSupabase);
-    if (error) {
-      alert("MostrarUsuarios", error);
-    }
+    // if (error) {
+    //   alert("MostrarUsuarios", error);
+    // }
     if (data) {
       return data?.[0] ?? null; //
     }
   } catch (error) {
-    alert(error.error_description || error.message + "MostrarUsuarios");
+   // alert(error.error_description || error.message + "MostrarUsuarios");
   }
 };
 
@@ -36,7 +36,7 @@ export async function EditarTemaMonedaUser(p) {
       alert("Error al editar usuario", error);
     }
     Swal.fire({
-      position: "top-end",
+      //position: "top-end",
       icon: "success",
       title: "Datos modificados",
       showConfirmButton: false,

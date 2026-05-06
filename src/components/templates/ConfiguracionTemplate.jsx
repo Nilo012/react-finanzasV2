@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export function ConfiguracionTemplate() {
   //3.agrgamos editarmoneda y tema
-  const { datausuarios,editartemamonedauser } = useUsuariosStore();
+  const { datausuarios, editartemamonedauser } = useUsuariosStore();
 
   const [select, setSelect] = useState([]); //manejo de estados para seleccionar moneda
   const [selectTema, setSelecttema] = useState([]); //*manejo d estado para el tema claro/oscuro
@@ -35,17 +35,17 @@ export function ConfiguracionTemplate() {
   const temaSeleccionado = iconinicial + " " + temainicial;
 
   //3.funcion editar tema y moneda
-  const editar = async()=>{
-    const themeElegido = selectTema.descripcion==="light"?"0":"1"
-    const p ={
+  const editar = async () => {
+    const themeElegido = selectTema.descripcion === "light" ? "0" : "1";
+    const p = {
       //3.la palabra tema,moneda,pais,id es igual q el nombre de atributo q esta en la tabla usuarios
-      tema:themeElegido,
-      moneda:moneda,
+      tema: themeElegido,
+      moneda: moneda,
       pais: pais,
-      id: datausuarios.id
-    }
+      id: datausuarios.id,
+    };
     await editartemamonedauser(p);
-  }
+  };
 
   return (
     <>
@@ -55,10 +55,9 @@ export function ConfiguracionTemplate() {
             stateConfig={{ state: state, setState: () => setState(!state) }}
           />
         </header>
-        <section className="area1">
-          <h1>Ajustes</h1>
-        </section>
+
         <section className="area2">
+          <h1>Ajustes</h1>
           <ContentCard>
             <span>Moneda:</span>
             <Selector
@@ -97,11 +96,10 @@ export function ConfiguracionTemplate() {
           <BtnSave
             titulo="Guardar"
             bgcolor={v.colorselector}
-            icono={<v.iconoguardar />} funcion={editar}
+            icono={<v.iconoguardar />}
+            funcion={editar}
           />
         </section>
-
-        <section className="main">area3</section>
       </Container>
     </>
   );
@@ -115,24 +113,17 @@ const Container = styled.div`
   display: grid;
   grid-template:
     "header" 100px
-    "area1" 100px
-    "area2" 50px
-    "main" auto;
+    "area2" auto;
+
   font-size: 12px;
 
   .header {
     grid-area: header;
-    background-color: rgba(103, 93, 241, 0.14);
+    //background-color: rgba(103, 93, 241, 0.14);
     display: flex;
     align-items: center;
   }
-  .area1 {
-    grid-area: area1;
-    background-color: rgba(229, 67, 25, 0.14);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
   .area2 {
     grid-area: area2;
     background-color: rgba(77, 237, 106, 0.14);
@@ -141,10 +132,11 @@ const Container = styled.div`
     flex-direction: column; //posicionamiento vertical
     justify-content: start;
     gap: 30px;
-  }
-  .main {
-    grid-area: main;
-    background-color: rgba(179, 46, 241, 0.14);
+    align-self: center;
+    h1{
+      font-size: 32px;
+      text-transform: uppercase;
+    }
   }
 `;
 const ContentCard = styled.div`
