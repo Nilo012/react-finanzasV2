@@ -1,28 +1,29 @@
 //https://styled-components.com/
 import styled from "styled-components";
-import { ItemsDesplegable, v } from "../../index"
-export function ListaMenuDesplegable({data, top,funcion}) {
+import { ItemsDesplegable, v } from "../../index";
+export function ListaMenuDesplegable({ data, top, funcion }) {
   return (
     <Container top={top}>
-      {
-        data.map((item,index)=>{
-          return(
-            <ItemsDesplegable key={index} item={item} funcion={()=>funcion(item.tipo)}/>
-          )
-        })
-      }
+      {data.map((item, index) => {
+        return (
+          <ItemsDesplegable
+            key={index}
+            item={item}
+            funcion={() => funcion(item)}
+          />
+        );
+      })}
     </Container>
   );
 }
 const Container = styled.div`
-padding: 10px;
-display: flex;
-flex-direction: column;
-position: absolute;
-background-color: ${({theme})=>theme.bg3};
-border-radius: 20px;
-top: ${(props)=>props.top};//ver datauser.jsx
-box-shadow: ${()=>v.boxshadowGray};
-z-index: 100;
-
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: ${({ theme }) => theme.bg3};
+  border-radius: 20px;
+  top: ${(props) => props.top}; //ver datauser.jsx
+  box-shadow: ${() => v.boxshadowGray};
+  z-index: 100;
 `;
