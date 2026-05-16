@@ -12,24 +12,58 @@ import { useState } from "react";
 
 export function CategoriasTemplate() {
   const [state, setState] = useState(false); //manejo de estados
-  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo } = useOperaciones();
-  function cambiarTipo(p){
-    setTipo(p)
+  //1.manejo de estados por tipo
+  const [stateTipo, setStateTipo] = useState(false);
+  const { colorCategoria, tituloBtnDes, bgCategoria, setTipo } =
+    useOperaciones();
+  function cambiarTipo(p) {
+    setTipo(p);
+    setStateTipo(!stateTipo);
+    setState(false); //evitar q se despliegen mas de 2 listas la vez
+  }
+  //cerrar desplegables
+  function cerrarDesplegable() {
+    setStateTipo(false);
+    setState(false);
+  }
+  //evitar q se despliegen mas de 2 listas la vez
+  function openTipo() {
+    setStateTipo(!stateTipo);
+    setState(false);
+  }
+  function openUser() {
+    setState(!state);
+    setStateTipo(false);
   }
 
   return (
     <>
-      <Container>
+      <Container onClick={cerrarDesplegable}>
         <header className="header">
-          <Header
-            stateConfig={{ state: state, setState: () => setState(!state) }}
-          />
+          <Header stateConfig={{ state: state, setState: openUser }} />
         </header>
 
         <section className="tipo">
           <ContentFiltros>
-            <BtnDesplegable textcolor={colorCategoria} bgcolor={bgCategoria} text={tituloBtnDes}  />
-            <ListaMenuDesplegable data={DataDesplegableTipo} top="112%" funcion={(p)=>cambiarTipo(p)}/>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <BtnDesplegable
+                textcolor={colorCategoria}
+                bgcolor={bgCategoria}
+                text={tituloBtnDes}
+                funcion={openTipo}
+              />
+              {stateTipo && (
+                <ListaMenuDesplegable
+                  data={DataDesplegableTipo}
+                  top="112%"
+                  funcion={(p) => cambiarTipo(p)}
+                />
+              )}
+            </div>
           </ContentFiltros>
         </section>
         <section className="area2">area2</section>
