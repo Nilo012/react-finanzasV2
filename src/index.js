@@ -25,6 +25,7 @@ export * from './components/atoms/ContentHeader';
 export * from './components/atoms/Icono';
 export * from './components/molecules/BtnCircular';
 export * from './components/molecules/BtnDesplegable';
+export * from './components/molecules/Btnfiltro';
 export * from './components/molecules/BtnSave';
 export * from './components/molecules/InputBuscardorLista';
 export * from './components/molecules/ItemsDesplegable';

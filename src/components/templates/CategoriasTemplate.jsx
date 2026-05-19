@@ -7,6 +7,8 @@ import {
   useOperaciones,
   ListaMenuDesplegable,
   DataDesplegableTipo,
+  Btnfiltro,
+  v,
 } from "../../index";
 import { useState } from "react";
 
@@ -66,7 +68,12 @@ export function CategoriasTemplate() {
             </div>
           </ContentFiltros>
         </section>
-        <section className="area2">area2</section>
+        <section className="area2">
+          <ContentFiltro>
+            <Btnfiltro bgcolor={bgCategoria} textcolor={colorCategoria} icono={<v.agregar/>}/>
+          </ContentFiltro>
+
+        </section>
         <section className="main">area3</section>
       </Container>
     </>
@@ -102,9 +109,15 @@ const Container = styled.div`
     background-color: rgba(77, 237, 106, 0.14);
     display: flex;
     align-items: center;
+    justify-content: end;
   }
   .main {
     grid-area: main;
     background-color: rgba(179, 46, 241, 0.14);
   }
 `;
+
+const ContentFiltro = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
