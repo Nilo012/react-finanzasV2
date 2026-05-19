@@ -22,6 +22,7 @@
     "router": "^2.2.0",
     "styled": "^1.0.0",
     "styled-components": "^6.3.11",
+    "sweetalert2": "^11.26.24",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
