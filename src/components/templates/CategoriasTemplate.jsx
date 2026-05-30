@@ -9,10 +9,12 @@ import {
   DataDesplegableTipo,
   Btnfiltro,
   v,
+  TablaCategorias,
 } from "../../index";
 import { useState } from "react";
+import { data } from "react-router-dom";
 
-export function CategoriasTemplate() {
+export function CategoriasTemplate({data}) {
   const [state, setState] = useState(false); //manejo de estados
   //1.manejo de estados por tipo
   const [stateTipo, setStateTipo] = useState(false);
@@ -74,7 +76,11 @@ export function CategoriasTemplate() {
           </ContentFiltro>
 
         </section>
-        <section className="main">area3</section>
+        <section className="main">
+          <TablaCategorias data={data}/>
+        
+
+        </section>
       </Container>
     </>
   );

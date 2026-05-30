@@ -1,4 +1,3 @@
-
 import { CiPalette } from "react-icons/ci";
 import { BsEmojiLaughing } from "react-icons/bs";
 import { RiDeleteBin2Line, RiEditLine } from "react-icons/ri";
@@ -26,6 +25,10 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { IoIosArrowDropright } from "react-icons/io";
 import fondo from "../assets/fondo1.svg";
 import { IoIosArrowBack } from "react-icons/io";
+
+import { GrFormPrevious, GrCaretNext } from "react-icons/gr";
+import { MdOutlineBorderAll } from "react-icons/md";
+
 export const v = {
   sidebarWidth: `300px`,
   sidebarWidthInitial: `10vw`,
@@ -56,7 +59,7 @@ export const v = {
     -webkit-box-shadow: -2px 14px 20px -4px rgba(0,0,0,0.4);
     -moz-box-shadow: -2px 14px 20px -4px rgba(0,0,0,0.4);`,
   iconoFlechabajo: IoIosArrowDown,
-  iconoFlechaderecha:IoIosArrowBack,
+  iconoFlechaderecha: IoIosArrowBack,
   iconocorona: RiVipCrownFill,
   iconoUser: BiUserCircle,
   iconoSettings: RiSettings3Line,
@@ -82,7 +85,12 @@ export const v = {
   iconocheck: BsCalendarCheck,
   imagenfondo: fondo,
   colorSecundario: `#c6ffe6`, //#DAC1FF
-  colorselector:`#6ef0b9`,
+  colorselector: `#6ef0b9`,
+  rgbafondos: "rgba(210, 110, 249, 0.1)",
+
+  iconoprev: GrFormPrevious,
+  icononext: GrCaretNext,
+  iconotodos: MdOutlineBorderAll,
 };
 /*
     --primary-100:#2E8B57;

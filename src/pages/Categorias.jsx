@@ -8,7 +8,7 @@ import { useUsuariosStore } from "../store/UsuariosStore";
 export function Categorias() {
   const { datacategoria, mostrarCategorias } = useCategoriasStore();
   const { datausuarios } = useUsuariosStore();
-  // CORRECCIÓN: Sintaxis de objeto para useQuery
+  // CORRECCIÓN: Sintaxis de objeto para useQuery actualizacion de estados
   const { isLoading, error } = useQuery({
     queryKey: ["mostrar categorias", datausuarios?.id],
     queryFn: () => mostrarCategorias({ idusuario: datausuarios.id, tipo: "i" }),
@@ -24,10 +24,8 @@ export function Categorias() {
   return (
     <>
       <Container>
-        {datacategoria.map((item, index) => {
-          return <h1>{item.descripcion}</h1>;
-        })}
-        <CategoriasTemplate />
+       
+        <CategoriasTemplate  data={datacategoria}/>
       </Container>
     </>
   );

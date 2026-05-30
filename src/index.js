@@ -45,3 +45,7 @@ export * from './components/templates/LoginTemplate';
 export * from './components/templates/PlantillaBasic';
 export * from './components/organisms/sidebar/Sidebar';
 export * from './components/organisms/sidebar/SidebarCard';
+export * from './components/organisms/tablas/AccionesTabla';
+export * from './components/organisms/tablas/ContentAccionesTabla';
+export * from './components/organisms/tablas/Paginacion';
+export * from './components/organisms/tablas/TablaCategorias';
